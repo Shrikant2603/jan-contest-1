@@ -20,6 +20,11 @@ function SignUpForm() {
         setError('Error: Email can not be empty');
         return;
     }
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    if (!emailRegex.test(email)) {
+      setError('Error: Email is invalid');
+      return;
+    }
     if (!password) {
         setError('Error: Password can not be empty');
         return;
@@ -32,11 +37,7 @@ function SignUpForm() {
         setError('Error: Passwords do not match');
         return;
     }
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    if (!emailRegex.test(email)) {
-      setError('Error: Email is invalid');
-      return;
-    }
+    
     setError('');
     setSuccess('Successfully Signed Up!');
   }
